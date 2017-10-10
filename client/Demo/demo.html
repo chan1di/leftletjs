@@ -1,0 +1,39 @@
+
+<template name="Demo">
+    <h1>hi</h1>
+    {{> Update}}
+
+    <form>
+    	<input type="text" name="chandresh">
+    	<input type="submit" name="submit" value="Create">
+    </form>
+
+    {{> wowza}}
+
+    <ul>{{#each categories}} {{> Listview}} {{/each}}</ul>
+
+</template>
+
+<template name="Listview">
+	<li><input type="button" id="delete" value="Delete">{{naming}}<input type="button" id="edit" value="Edit"></li>
+</template>
+
+
+<template name="Update">
+
+ 	<form>
+    	<input type="text" name="chandreshs" value="{{getUpdate.naming}}">
+    	<input type="submit" name="submit" value="Update">
+    </form>
+</template>
+
+<template name="wowza">
+
+<div class="row">
+        <input type="text" id="address" placeholder="Type Your address here" />
+        <button type="button" id="find_Geolocation" class="btn btn-primary">geoLocation</button>
+    </div>
+    <!-- {{addressMap}} -->
+    <div id="mapid"></div>
+
+</template>
