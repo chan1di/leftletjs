@@ -73,104 +73,123 @@ Template.wowza.events({
         event.preventDefault();
         var getVal = $("#address").val();
         console.log(getVal);
+        var blue;
         var geocoder = new google.maps.Geocoder();
-        geocoder.geocode({ 'address': getVal }, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                lat_data = results[0].geometry.location.lat();
-                long_data = results[0].geometry.location.lng()
+        // geocoder.geocode({ 'address': getVal }, function(results, status) {
+        //     if (status == google.maps.GeocoderStatus.OK) {
+        //         lat_data = results[0].geometry.location.lat();
+        //         long_data = results[0].geometry.location.lng()
 
-            } else {
-                alert("Something got wrong " + status);
+        //     } else {
+        //         alert("Something got wrong " + status);
+        //     }
+        // });
+        // console.log(lat_data, "lat_long data", long_data);
+        // if (lat_data !== undefined) {
+        //     console.log("if called");
+
+        var planes = [
+
+            {
+                group: "Group1",
+                marking: ["7C6B07", -40.99497, 174.50808],
+                linkUrl: "/map1.png"
+            },
+            {
+                group: "Group2",
+                marking: ["7C6B38", -41.30269, 173.63696],
+                linkUrl: "/map2.png"
+            },
+            {
+                group: "Group3",
+                marking: ["7C6CA1", -41.49413, 173.5421],
+                linkUrl: "/map3.png"
+            },
+            {
+                group: "Group4",
+                marking: ["7C6CA2", -40.98585, 174.50659],
+                linkUrl: "/map4.png"
+            },
+            {
+                group: "Group3",
+                marking: ["7C6CA2", -40.93163, 173.81726],
+                linkUrl: "/map3.png"
+            },
+            {
+                group: "Group2",
+                marking: ["7C6CA2", -41.42079, 173.5783],
+                linkUrl: "/map2.png"
+            },
+            {
+                group: "Group1",
+                marking: ["7C6CA2", -42.08414, 173.96632],
+                linkUrl: "/map1.png"
+            },
+
+
+        ];
+
+        console.log(planes.length);
+
+        // ***********For custom markers ********
+
+        var LeafIcon = L.Icon.extend({
+            options: {
+                // shadowUrl: 'leaf-shadow.png',
+                iconSize: [45, 70],
+                // shadowSize: [50, 64],
+                iconAnchor: [22, 94],
+                // shadowAnchor: [4, 62],
+                popupAnchor: [-3, -76]
             }
         });
-        console.log(lat_data, "lat_long data", long_data);
-        if (lat_data !== undefined) {
-            console.log("if called");
 
 
-            // ***********For custom markers ********
-
-            // var greenIcon = L.icon({
-            //     iconUrl: './meteor.png',
-            //     // shadowUrl: 'leaf-shadow.png',
-
-            //     iconSize: [38, 95], // size of the icon
-            //     // shadowSize: [50, 64], // size of the shadow
-            //     iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
-            //     // shadowAnchor: [4, 62], // the same for the shadow
-            //     popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
-            // });
+        mymap = L.map('mapid').setView([-41.3058, 174.82082], 13);
 
 
-            // *********Open popup**********
-            // var popup = L.popup()
-            //     .setLatLng([lat_data, long_data])
-            //     .setContent('<p>Hello world!<br />This is a nice popup.</p>')
-            //     .openOn(mymap);
+        for (var i = 0; i < planes.length; i++) {
 
+            blue = new LeafIcon({ iconUrl: planes[i].linkUrl });
+            var marker = L.marker([planes[i].marking[1], planes[i].marking[2]], {
+                draggable: true,
+                title: "Resource location",
+                icon: blue,
+                riseOnHover: true
+            }).addTo(mymap).bindPopup(planes[i].group).openPopup();
+            console.log(planes[i].marking[1]);
+            marker.on("dragend", function(ev) {
+                var chagedPos = ev.target.getLatLng();
+                console.log(chagedPos.lat);
+                console.log(chagedPos.lng);
+                // this.bindPopup(chagedPos.toString()).openPopup();
+                // this.bindTooltip(chagedPos.toString()).openTooltip();
 
-
-
-            mymap = L.map('mapid').setView([lat_data, long_data], 13);
-            // var marker = L.marker([lat_data, long_data], { draggable: true, keyboard: true, bubblingMouseEvents: true, title: "Drag me", attribution: "don't know yet", color: "red" }).addTo(mymap);
-            // marker.bindPopup("here i am").openPopup();
-
-
-
-            function onMapClick(e) {
-
-	 	    var marker = L.marker(e.latlng, {
-	 	        draggable: true,
-	 	        title: "Resource location",
-	 	        alt: "Resource Location",
-	 	        riseOnHover: true
-	 	    }).addTo(mymap).bindPopup(e.latlng.toString()).openPopup();
-	 	    
-	 	     // Update marker on changing it's position
-	 	    marker.on("dragend", function (ev) {
-	 	        var chagedPos = ev.target.getLatLng();
-	 	        console.log(chagedPos.lat);
-	 	        console.log(chagedPos.lng);
-	 	        // geocoder.reverseGeocode( 33.7489, -84.3789, function ( err, data ) {
- 
-           //      });
-	 	        this.bindPopup(chagedPos.toString()).openPopup();
-	 	        this.bindTooltip(chagedPos.toString()).openTooltip();
-
-
-	 	    });
-	 	}
-	 	mymap.on('click', onMapClick);
-	 	
-            // marker.on('dragend ', function(event) {
-            //     var markers = event.target;
-            //     var position = markers.getLatLng();
-            //     var str = "string value";
-            //     console.log(event.target.getLatLng());
-            //     marker.bindTooltip(str).openTooltip();
-            //     // 
-            //     // marker.setLatLng(position, {draggable: true }).bindPopup(position).update();
-            //     // marker.setLatLng(position, { id: uni, draggable: 'true' }).bindPopup(position).update();
-            // });
-            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-                attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-                maxZoom: 18,
-                id: 'mapbox.streets',
-                accessToken: 'pk.eyJ1IjoiY2hhbi0xZGkiLCJhIjoiY2o4azN6cjNkMDlzcTJxbXV1NmkwanYzciJ9.iEs0CzDiLng_q1Kvl2dAAQ'
-            }).addTo(mymap);
-
-
-        } else {
-            alert("value undefined");
+            });
+           
         }
+         // mymap.removeLayer(marker);
+
+
+        // Update marker on changing it's position
+
+        // }
+        // mymap.on('click', onMapClick);
+
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox.streets',
+            accessToken: 'pk.eyJ1IjoiY2hhbi0xZGkiLCJhIjoiY2o4azN6cjNkMDlzcTJxbXV1NmkwanYzciJ9.iEs0CzDiLng_q1Kvl2dAAQ'
+        }).addTo(mymap);
+
+
+        // } else {
+        //     alert("value undefined");
+        // }
         console.log(mymap, "mymap called");
 
-        // need to check the multiple address code
 
-        // if (mymap !== undefined || mymap !== null) {
-        //     mymap.remove(); // should remove the map from UI and clean the inner children of DOM element
-        //     console.log(mymap,"consoleing"); // nothing should actually happen to the value of mymap
-        // }
     }
 
 });
