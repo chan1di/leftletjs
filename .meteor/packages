@@ -31,3 +31,4 @@ hitchcott:qr-scanner
 google-config-ui
 http
 iron:router
+practicalmeteor:mocha
