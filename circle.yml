@@ -8,15 +8,17 @@ dependencies:
     - if [ -d ~/.meteor ]; then sudo ln -s ~/.meteor/meteor /usr/local/bin/meteor; fi
     - if [ ! -e $HOME/.meteor/meteor ]; then curl https://install.meteor.com | sh; fi
     - meteor npm install 
-    - npm install -g json-schema-traverse
-    - npm install -g fast-deep-equal
-    - npm install -g chimp
-    - npm install -g selenium-standalone
+    # - npm install -g json-schema-traverse
+    # - npm install -g fast-deep-equal
+    # - npm install -g chimp
+    # - npm install -g selenium-standalone
 test:
   override:
-    - npm run dev:
-        background: true
-    - sleep 360
+    # - npm run dev:
+    #     background: true
+    # - sleep 360
+    - node -v
+    - npm -v
     - npm run chimp-test
 # deployment:
 #   staging:
