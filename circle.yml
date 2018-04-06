@@ -7,10 +7,12 @@ dependencies:
     # Cache Meteor
     - if [ -d ~/.meteor ]; then sudo ln -s ~/.meteor/meteor /usr/local/bin/meteor; fi
     - if [ ! -e $HOME/.meteor/meteor ]; then curl https://install.meteor.com | sh; fi
-    - meteor npm install 
+    - meteor npm install
+    - curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh -o install_nvm.sh 
+    - bash install_nvm.sh
     # - npm install -g json-schema-traverse
     # - npm install -g fast-deep-equal
-    # - npm install -g chimp
+    - npm install chimp
     # - npm install -g selenium-standalone
 test:
   override:
