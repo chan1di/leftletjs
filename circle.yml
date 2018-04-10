@@ -6,11 +6,13 @@ dependencies:
   override:
     # Cache Meteor    
     - nvm install 8.9.4
+    - google-chrome --version
     - nvm alias default 8.9.4
     - if [ -d ~/.meteor ]; then sudo ln -s ~/.meteor/meteor /usr/local/bin/meteor; fi
     - if [ ! -e $HOME/.meteor/meteor ]; then curl https://install.meteor.com | sh; fi
     - nvm ls
     - npm install -g chimp
+    - npm install --global mup
     - npm -g install chromedriver
     - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     - sudo dpkg -i google-chrome-stable_current_amd64.deb
@@ -19,6 +21,7 @@ dependencies:
     - chimp -v
     - chromedriver --version
     - google-chrome --version
+    - mup --version
     # - npm install -g selenium-standalone
 test:
   override:
