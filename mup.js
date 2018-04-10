@@ -3,7 +3,7 @@ module.exports = {
     one: {
       "host": "139.59.33.198",
       "username": "root",
-      "pem": "/Users/user/.ssh/id_rsa"
+      "pem": "/home/chan1di/.ssh/id_rsa"
     }
   },
 
