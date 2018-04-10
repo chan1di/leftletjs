@@ -14,6 +14,7 @@ dependencies:
     - node -v
     - npm -v
     - chimp -v
+    # - npm install chimp
     # - npm install -g selenium-standalone
 test:
   override:
