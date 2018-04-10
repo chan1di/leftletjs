@@ -33,7 +33,7 @@ deployment:
   staging:
     branch: "master"
     commands: 
-      - mup setup --verbose
+      # - mup setup --verbose
       - mup deploy
 # production:
 #     branch: "master"
