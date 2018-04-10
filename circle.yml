@@ -14,7 +14,6 @@ dependencies:
     - node -v
     - npm -v
     - chimp -v
-    # - npm install -g json-schema-traverse
     # - npm install -g fast-deep-equal
     # - npm install chimp
     # - npm install -g selenium-standalone
