@@ -4,11 +4,11 @@ dependencies:
     - "~/.npm"
     - "~/.meteor"
   override:
-    # Cache Meteor
+    # Cache Meteor    
+    - nvm install 8.9.4
+    - nvm use 8.9.4
     - if [ -d ~/.meteor ]; then sudo ln -s ~/.meteor/meteor /usr/local/bin/meteor; fi
     - if [ ! -e $HOME/.meteor/meteor ]; then curl https://install.meteor.com | sh; fi
-    - nvm use 8.9.4
-    - meteor npm install
     - nvm ls
     - node -v
     - npm -v
