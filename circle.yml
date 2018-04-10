@@ -10,8 +10,10 @@ dependencies:
     - if [ -d ~/.meteor ]; then sudo ln -s ~/.meteor/meteor /usr/local/bin/meteor; fi
     - if [ ! -e $HOME/.meteor/meteor ]; then curl https://install.meteor.com | sh; fi
     - nvm ls
+    - npm install -g chimp
     - node -v
     - npm -v
+    - chimp -v
     # - npm install -g json-schema-traverse
     # - npm install -g fast-deep-equal
     # - npm install chimp
