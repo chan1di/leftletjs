@@ -12,7 +12,7 @@ dependencies:
     - bash install_nvm.sh
     # - npm install -g json-schema-traverse
     # - npm install -g fast-deep-equal
-    - npm install chimp
+    # - npm install chimp
     # - npm install -g selenium-standalone
 test:
   override:
@@ -21,7 +21,7 @@ test:
     # - sleep 360
     - node -v
     - npm -v
-    - npm run chimp-test
+    # - npm run chimp-test
 # deployment:
 #   staging:
 #     branch: "dev"
