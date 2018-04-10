@@ -26,12 +26,12 @@ test:
     #     background: true
     # - sleep 360
     - npm run chimp-test
-# deployment:
-#   staging:
-#     branch: "dev"
-#     commands:
-#       - echo $DEPLOYMENT_TOKEN > deployment_token.json
-#       - METEOR_SESSION_FILE=deployment_token.json DEPLOY_HOSTNAME=eu-west-1.galaxy-deploy.meteor.com meteor deploy www.YOUR_STAGING_APP.com --settings settings-development.json
+deployment:
+  staging:
+    branch: "master"
+    commands: 
+      - mup setup --verbose
+      - mup deploy
 # production:
 #     branch: "master"
 #     commands:
