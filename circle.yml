@@ -23,7 +23,7 @@ test:
     # - npm run dev:
     #     background: true
     # - sleep 360
-    # - npm run chimp-test
+    - npm run chimp-test
 # deployment:
 #   staging:
 #     branch: "dev"
