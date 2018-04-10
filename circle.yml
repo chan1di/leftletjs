@@ -9,7 +9,10 @@ dependencies:
     - if [ ! -e $HOME/.meteor/meteor ]; then curl https://install.meteor.com | sh; fi
     - meteor npm install
     - curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh -o install_nvm.sh 
-    # - bash install_nvm.sh
+    - bash install_nvm.sh
+    - source ~/.profile
+    - nvm install 8.9.4
+
     # - npm install -g json-schema-traverse
     # - npm install -g fast-deep-equal
     # - npm install chimp
@@ -19,6 +22,8 @@ test:
     # - npm run dev:
     #     background: true
     # - sleep 360
+    - nvm use 8.9.4
+    - nvm ls
     - node -v
     - npm -v
     # - npm run chimp-test
