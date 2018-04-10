@@ -6,11 +6,10 @@ dependencies:
   override:
     # Cache Meteor    
     - nvm install 8.9.4
-    - nvm use 8.9.4
+    - nvm alias default 8.9.4
     - if [ -d ~/.meteor ]; then sudo ln -s ~/.meteor/meteor /usr/local/bin/meteor; fi
     - if [ ! -e $HOME/.meteor/meteor ]; then curl https://install.meteor.com | sh; fi
     - nvm ls
-    - chimp -v
     - node -v
     - npm -v
     # - npm install -g json-schema-traverse
