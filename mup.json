@@ -3,7 +3,7 @@
     "servers": [{
         "host": "139.59.33.198",
         "username": "root",
-        "pem": "/home/chan1di/.ssh/id_rsa"
+        "pem": "~/.ssh/id_12b8cabb3882421084f446d98b2f4e49"
         // or pem file (ssh based authentication)
         // "pem": "~/Downloads/id_rsa.pem"
     }],

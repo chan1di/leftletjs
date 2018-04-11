@@ -3,7 +3,7 @@ module.exports = {
         one: {
             host: '139.59.33.198',
             username: 'root',
-            pem:  '~/.ssh/authorized_keys' // pem key
+            pem:  '~/.ssh/id_12b8cabb3882421084f446d98b2f4e49' // pem key
                 // or leave blank for authenticate from ssh-agent}
         }
     },
