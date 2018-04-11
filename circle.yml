@@ -22,6 +22,7 @@ dependencies:
     - chromedriver --version
     - google-chrome --version
     - mup --version
+    - cat /home/chan1di/.ssh/id_rsa.pub
 test:
   override:
     # - npm run dev:
