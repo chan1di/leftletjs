@@ -23,7 +23,7 @@ dependencies:
     # - google-chrome --version
     # - mup --version
     - ls
-    - cat ~/.ssh/id_rsa.pub
+    - cat id_rsa.pub
 # test:
 #   override:
 #     # - npm run dev:
