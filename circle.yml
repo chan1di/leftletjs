@@ -16,7 +16,7 @@ dependencies:
     # - npm -g install chromedriver
     # - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     # - sudo dpkg -i google-chrome-stable_current_amd64.deb
-    - node -v
+    # - node -v
     # - npm -v
     # - chimp -v
     # - chromedriver --version
