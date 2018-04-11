@@ -3,7 +3,7 @@ module.exports = {
         one: {
             host: '139.59.33.198',
             username: 'root',
-            pem:  '~/.ssh/id_circleci_github' // pem key
+            pem:  '~/.ssh/authorized_keys' // pem key
                 // or leave blank for authenticate from ssh-agent}
         }
     },
