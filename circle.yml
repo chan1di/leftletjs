@@ -22,7 +22,6 @@ dependencies:
     - chromedriver --version
     - google-chrome --version
     - mup --version
-    # - npm install -g selenium-standalone
 test:
   override:
     # - npm run dev:
