@@ -22,8 +22,7 @@ dependencies:
     # - chromedriver --version
     # - google-chrome --version
     # - mup --version
-    # - ls
-    - whereis node
+    - ls ~/.ssh/
 # test:
 #   override:
 #     # - npm run dev:
